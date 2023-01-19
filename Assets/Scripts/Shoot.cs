@@ -24,8 +24,11 @@ public class Shoot : MonoBehaviour
             if (target != null)
             {
                 Debug.Log("Hit !");
-                // Set the color to random
-                target.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value);
+                // Destroy the object if it is a prefab named Dummie
+                if (target.name == "Dummie")
+                {
+                    Destroy(target);
+                }
             }
         }
     }

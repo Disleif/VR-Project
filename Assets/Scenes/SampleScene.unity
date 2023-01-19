@@ -1036,7 +1036,7 @@ Transform:
   m_GameObject: {fileID: 1043037738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2064,6 +2064,7 @@ GameObject:
   - component: {fileID: 1874767496}
   - component: {fileID: 1874767495}
   - component: {fileID: 1874767497}
+  - component: {fileID: 1874767498}
   m_Layer: 6
   m_Name: XR Origin
   m_TagString: Untagged
@@ -2118,6 +2119,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActionAssets:
   - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &1874767498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874767494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfaed3ba8428faf49832f26a60d41532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2458363057876632765, guid: b51387b2cc24ffc4f8395e6692b1081c, type: 3}
+  targetNumber: 3
 --- !u!1 &2095526018
 GameObject:
   m_ObjectHideFlags: 0
