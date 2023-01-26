@@ -34,9 +34,16 @@ public class Shoot : MonoBehaviour
     }
 
     // Draw a ray in the Scene view
-    void OnDrawGizmos()
+    /* void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(bulletSpawn.position, bulletSpawn.forward * 100);
+    } */
+
+    void Update() {
+        // Draw a line renderer
+        LineRenderer lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.SetPosition(0, bulletSpawn.position);
+        lineRenderer.SetPosition(1, bulletSpawn.position + bulletSpawn.forward * 100);
     }
 }
