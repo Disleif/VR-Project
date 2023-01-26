@@ -5,6 +5,7 @@ public class Shoot : MonoBehaviour
 {
     public Transform bulletSpawn;
     public XRGrabInteractable grabbable;
+    public spawnDummies dummiesScript;
     
     void Start()
     {
@@ -20,14 +21,15 @@ public class Shoot : MonoBehaviour
         if (Physics.Raycast(bulletSpawn.position, bulletSpawn.forward, out hit))
         {
             // Check if we hit something
-            GameObject target = hit.collider.gameObject;
+            GameObject target = hit.collider.gameObject.transform.parent.gameObject;
             if (target != null)
             {
                 Debug.Log("Hit !");
-                // Destroy the object if it is a prefab named Dummie
-                if (target.name == "Dummie")
+                // Destroy the object if it has tag Enemy
+                if (target.transform.CompareTag("Enemy"))
                 {
                     Destroy(target);
+                    dummiesScript.then(); //Act according to kill
                 }
             }
         }

@@ -7,12 +7,9 @@ public class spawnDummies : MonoBehaviour
     private List<GameObject> dummies = new List<GameObject>();
     [SerializeField] public GameObject target;
     [SerializeField, Range(1,5)] private int targetNumber = 3;
-    private int lastTargetNumber;
     // Start is called before the first frame update
     void Start()
     {
-        lastTargetNumber = targetNumber;
-
         for (int i = 0; i < targetNumber; i++)
         {
             CreateTarget();
@@ -22,21 +19,7 @@ public class spawnDummies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Adapt the numer of dummies to the targetNumber
-        if (lastTargetNumber < targetNumber) {
-            for (int i = lastTargetNumber; i < targetNumber; i++) {
-                CreateTarget();
-            }
-            lastTargetNumber = targetNumber;
-        }
-        else if (lastTargetNumber > targetNumber) {
-            for (int i = lastTargetNumber; i > targetNumber; i--) {
-                // Remove the last object in the list
-                Destroy(dummies[dummies.Count - 1]);
-                dummies.RemoveAt(dummies.Count - 1);
-            }
-            lastTargetNumber = targetNumber;
-        }
+        
     }
 
     public void CreateTarget() {
@@ -54,4 +37,10 @@ public class spawnDummies : MonoBehaviour
         // Add it to the list
         dummies.Add(go);
     }
+
+    public void then()
+    {
+        CreateTarget();
+    }
+
 }
