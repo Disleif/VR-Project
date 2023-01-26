@@ -43,6 +43,7 @@ public class spawnDummies : MonoBehaviour
         // Generate random coordinates
         float x = Random.Range(-35, 35);
         float z = Random.Range(-35, 35);
+        
         // Checks if there is any object in the coordinates
         while (Physics.CheckSphere(new Vector3(x, 0.5f, z), 0.4f)){
             x = Random.Range(-35, 35);
