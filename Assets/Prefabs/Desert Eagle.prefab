@@ -397,6 +397,8 @@ MonoBehaviour:
   muzzleFlash: {fileID: 100004, guid: 510e0a736e5e66243b242a076c59611a, type: 3}
   muzzleFlashSpawn: {fileID: 2048668573726382227}
   projectile: {fileID: 6649958942926428302, guid: 568336b8ed0e7ae4fbc9be383b10263b, type: 3}
+  projectileSpeed: 7
+  showLaser: 1
 --- !u!114 &2129538139672826519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8856770288803355549}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.308, y: 1.077, z: 0}
+  m_LocalPosition: {x: -0.79, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []

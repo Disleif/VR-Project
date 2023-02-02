@@ -9,6 +9,8 @@ public class Shoot : MonoBehaviour
     public GameObject muzzleFlash;
     public Transform muzzleFlashSpawn;
     public GameObject projectile;
+    public int projectileSpeed = 7;
+    public bool showLaser = true;
 
     void Start()
     {
@@ -58,7 +60,7 @@ public class Shoot : MonoBehaviour
         projectileRigidbody.useGravity = false;
 
         // Add force to the projectile
-        projectileRigidbody.AddForce(bulletSpawn.forward * 4000);
+        projectileRigidbody.AddForce(bulletSpawn.forward * projectileSpeed * 1000);
         Destroy(projectileObject, 0.2f);
     }
 
@@ -71,10 +73,13 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
-        // Draw a line renderer
-        LineRenderer lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.SetPosition(0, bulletSpawn.position);
-        lineRenderer.SetPosition(1, bulletSpawn.position + bulletSpawn.forward * 100);
+        if (showLaser)
+        {
+            // Draw a line renderer
+            LineRenderer lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer.SetPosition(0, bulletSpawn.position);
+            lineRenderer.SetPosition(1, bulletSpawn.position + bulletSpawn.forward * 100);
+        }
 
         
         if (Input.GetKeyDown(KeyCode.Space))
