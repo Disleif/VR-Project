@@ -40,18 +40,19 @@ public class Shoot : MonoBehaviour
         // Play the muzzle flash as child of the muzzle flash spawn
         GameObject flash = Instantiate(muzzleFlash, muzzleFlashSpawn.transform.position, muzzleFlashSpawn.transform.rotation);
         flash.transform.parent = muzzleFlashSpawn.transform;
-        flash.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
+        flash.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f);
         // Rotate the muzzle flash to point forward
         flash.transform.Rotate(Random.Range(0, 360), -90, 0);
         // Translate the muzzle flash forward
-        flash.transform.Translate(0.13f, 0, 0f);
+        flash.transform.Translate(0.092f, 0, 0f);
 
         // Destroy the muzzle flash after 0.5 seconds
         Destroy(flash, 0.1f);
 
-        // Quickly create and translate the projectile from the muzzle flash spawn to the hit point
+        // Create a visual projectile moving quickly
         GameObject projectileObject = Instantiate(projectile, muzzleFlashSpawn.transform.position, Camera.main.transform.rotation);
-        projectileObject.transform.Rotate(0, 0, 90);
+        // Set the rotation to the bullet spawn rotation
+        projectileObject.transform.rotation = bulletSpawn.rotation * Quaternion.Euler(90, 0, 0);
         // Give the projectile a rigidbody
         Rigidbody projectileRigidbody = projectileObject.AddComponent<Rigidbody>();
         projectileRigidbody.useGravity = false;
