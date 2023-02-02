@@ -26,7 +26,7 @@ public class Shoot : MonoBehaviour
         if (Physics.Raycast(bulletSpawn.position, bulletSpawn.forward, out hit))
         {
             // Check if we hit something
-            GameObject target = hit.collider.gameObject.transform.parent.gameObject;
+            GameObject target = hit.collider.gameObject.transform.parent?.gameObject;
             if (target != null)
             {
                 Debug.Log("Hit !");
