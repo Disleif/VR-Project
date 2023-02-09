@@ -8,7 +8,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] private GameObject targetPrefab;
     public int targetCount;
 
-    private int currentTargetCount;
+    private int currentTargetCount = 0;
     private bool initiated;
 
     // Start is called before the first frame update
@@ -37,10 +37,11 @@ public class GameMode : MonoBehaviour
 
         Debug.Log("Game Over");
         initiated = false;
+        currentTargetCount = 0;
     }
 
     private GameObject SpawnTarget() {
-        // Get random coords inside the box collider of the spawn zone
+        // Get random coords inside the spawn zone
         Vector3 randomCoords = spawnZone.position + new Vector3(
             Random.Range(-spawnZone.localScale.x / 2, spawnZone.localScale.x / 2),
             Random.Range(-spawnZone.localScale.y / 2, spawnZone.localScale.y / 2),
