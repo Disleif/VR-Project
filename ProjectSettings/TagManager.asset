@@ -16,8 +16,8 @@ TagManager:
   - Player
   - Interactable
   - Second Hand Grab
-  - Enemy
-  - Button
+  - Hittable
+  - 
   - 
   - 
   - 

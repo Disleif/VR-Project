@@ -30,7 +30,6 @@ public class Shoot : MonoBehaviour
             // Destroy the object if it has tag Enemy
             if (target.transform.CompareTag("Enemy"))
             {
-                Debug.Log("Hit enemy !");
                 Destroy(target.transform.parent?.gameObject);
             }
             
