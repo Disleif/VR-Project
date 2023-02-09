@@ -5,7 +5,6 @@ public class Shoot : MonoBehaviour
 {
     public Transform bulletSpawn;
     public XRGrabInteractable grabbable;
-    public spawnDummies dummiesScript;
     public GameObject muzzleFlash;
     public Transform muzzleFlashSpawn;
     public GameObject projectile;
@@ -23,19 +22,20 @@ public class Shoot : MonoBehaviour
 
         // Raycast
         RaycastHit hit;
-        if (Physics.Raycast(bulletSpawn.position, bulletSpawn.forward, out hit))
+        if (Physics.Raycast(bulletSpawn.position, bulletSpawn.forward, out hit, 100f, LayerMask.GetMask("Hittable")))
         {
             // Check if we hit something
-            GameObject target = hit.collider.gameObject.transform.parent?.gameObject;
-            if (target != null)
+            GameObject target = hit.collider.gameObject;
+
+            // Destroy the object if it has tag Enemy
+            if (target.transform.CompareTag("Enemy"))
             {
-                Debug.Log("Hit !");
-                // Destroy the object if it has tag Enemy
-                if (target.transform.CompareTag("Enemy"))
-                {
-                    Destroy(target);
-                    dummiesScript.then(); //Act according to kill
-                }
+                Debug.Log("Hit enemy !");
+                Destroy(target.transform.parent?.gameObject);
+            }
+            
+            if (target.transform.CompareTag("Button")) {
+                target.GetComponent<Button>().PressButton();
             }
         }
 
