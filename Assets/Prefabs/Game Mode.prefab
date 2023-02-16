@@ -427,8 +427,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5291343416493673389}
-  m_LocalRotation: {x: 0, y: -0.258819, z: 0, w: 0.9659259}
-  m_LocalPosition: {x: 0.557, y: 0, z: -2.1}
+  m_LocalRotation: {x: -0, y: 0.25881928, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 0.557, y: 0, z: 2.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -438,7 +438,7 @@ Transform:
   - {fileID: 4017216774771134204}
   m_Father: {fileID: 621027090116978249}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!1 &6556385446424591670
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Temps :
+  m_text: 'Temps
 
     0s'
   m_isRightToLeft: 0
@@ -1077,8 +1077,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7753638850637238805}
-  m_LocalRotation: {x: -0, y: 0.25881928, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 0.557, y: 0, z: 2.1}
+  m_LocalRotation: {x: 0, y: -0.258819, z: 0, w: 0.9659259}
+  m_LocalPosition: {x: 0.557, y: 0, z: -2.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1088,7 +1088,7 @@ Transform:
   - {fileID: 2292336894693471856}
   m_Father: {fileID: 621027090116978249}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
 --- !u!1 &8195192831280956176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,7 +1340,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9033751541358880044}
   m_LocalRotation: {x: 0.1530459, y: -0.6903456, z: 0.1530459, w: 0.6903456}
-  m_LocalPosition: {x: 0, y: 0, z: 0.408}
+  m_LocalPosition: {x: 0, y: 0, z: 0.357}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1349,7 +1349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 25, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.094, y: 0.037}
+  m_AnchoredPosition: {x: 0.088, y: 0.05}
   m_SizeDelta: {x: 1.1738, y: 0.1304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1351567472241248383
@@ -1414,7 +1414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cibles restantes :
+  m_text: 'Cibles restantes
 
     30'
   m_isRightToLeft: 0

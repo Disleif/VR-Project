@@ -21,13 +21,13 @@ public class GameMode : MonoBehaviour
     void Update() {
         if (initiated) {
             float time = Time.time - startTime;
-            timerText.GetComponent<TextMeshPro>().text = "Temps :\n" + time.ToString("F2");
+            timerText.GetComponent<TextMeshPro>().text = "Temps\n" + time.ToString("F2");
         }
         else if (finished) {
-            timerText.GetComponent<TextMeshPro>().text = "Temps :\n" + (endTime - startTime).ToString("F2");
+            timerText.GetComponent<TextMeshPro>().text = "Temps\n" + (endTime - startTime).ToString("F2");
         }
         else {
-            timerText.GetComponent<TextMeshPro>().text = "Temps :\n0.00";
+            timerText.GetComponent<TextMeshPro>().text = "Temps\n0.00";
         }
     }
 
@@ -52,7 +52,7 @@ public class GameMode : MonoBehaviour
 
             // Increment target count
             currentTargetCount++;
-            targetText.GetComponent<TextMeshPro>().text = "Cibles restantes :\n" + (targetCount - currentTargetCount + 1);
+            targetText.GetComponent<TextMeshPro>().text = "Cibles restantes\n" + (targetCount - currentTargetCount + 1);
             
             // Wait for target to be destroyed from scene
             yield return new WaitUntil(() => target == null);
@@ -62,7 +62,7 @@ public class GameMode : MonoBehaviour
         finished = true;
         endTime = Time.time;
         currentTargetCount = 0;
-        targetText.GetComponent<TextMeshPro>().text = "Cibles restantes :\n0";
+        targetText.GetComponent<TextMeshPro>().text = "Cibles restantes\n0";
     }
 
     private GameObject SpawnTarget() {
@@ -82,7 +82,7 @@ public class GameMode : MonoBehaviour
     public void SetTargetCount(int count) {
         if (!initiated) {
             targetCount = count;
-            targetText.GetComponent<TextMeshPro>().text = "Cibles restantes :\n" + count;
+            targetText.GetComponent<TextMeshPro>().text = "Cibles restantes\n" + count;
         }
     }
 }
