@@ -8,6 +8,7 @@ public class Shoot : MonoBehaviour
     public GameObject muzzleFlash;
     public Transform muzzleFlashSpawn;
     public GameObject projectile;
+    public AudioClip[] shootSounds;
     public int projectileSpeed = 7;
     public bool showLaser = true;
 
@@ -38,6 +39,10 @@ public class Shoot : MonoBehaviour
             }
         }
 
+        // Play a random shoot sound
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shootSounds[Random.Range(0, shootSounds.Length)];
+        audioSource.Play();
         // Play the muzzle flash as child of the muzzle flash spawn
         GameObject flash = Instantiate(muzzleFlash, muzzleFlashSpawn.transform.position, muzzleFlashSpawn.transform.rotation);
         flash.transform.parent = muzzleFlashSpawn.transform;
