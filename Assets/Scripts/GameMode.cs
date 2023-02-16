@@ -82,6 +82,7 @@ public class GameMode : MonoBehaviour
     public void SetTargetCount(int count) {
         if (!initiated) {
             targetCount = count;
+            targetText.GetComponent<TextMeshPro>().text = "Cibles restantes :\n" + count;
         }
     }
 }

@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnZone: {fileID: 2903518156544755279}
   targetPrefab: {fileID: 1696014694992928748, guid: d079cd0e6137a44b58864c3a91ad119a, type: 3}
-  targetCount: 15
+  targetCount: 30
   timerText: {fileID: 7417608432690120502}
   targetText: {fileID: 9033751541358880044}
 --- !u!1 &8649198727174431886
