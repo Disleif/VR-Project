@@ -44,7 +44,7 @@ public class GameMode : MonoBehaviour
         finished = false;
         startTime = Time.time;
         while (currentTargetCount < targetCount) {
-            // Wait for a bit
+            // Wait for .5 seconds
             yield return new WaitForSeconds(.5f);
 
             // Instantiate target
@@ -74,7 +74,7 @@ public class GameMode : MonoBehaviour
         );
 
         // Instantiate target
-        GameObject target = Instantiate(targetPrefab, randomCoords, spawnZone.rotation);
+        GameObject target = Instantiate(targetPrefab, randomCoords, spawnZone.rotation * Quaternion.Euler(0, 90, 0));
 
         return target;
     }

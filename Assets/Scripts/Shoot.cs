@@ -9,18 +9,26 @@ public class Shoot : MonoBehaviour
     public Transform muzzleFlashSpawn;
     public GameObject projectile;
     public AudioClip[] shootSounds;
+    public AudioClip headshotSound;
+    public AudioClip hitSound;
+    public float shootVolume = 1f;
     public int projectileSpeed = 7;
     public bool showLaser = true;
+
+    private AudioSource shootAudioSource;
+    private AudioSource hitAudioSource;
 
     void Start()
     {
         grabbable.activated.AddListener(RaycastShoot);
+
+        shootAudioSource = gameObject.AddComponent<AudioSource>();
+        shootAudioSource.volume = shootVolume;
+        hitAudioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void RaycastShoot(ActivateEventArgs args)
     {
-        Debug.Log("Shoot !");
-
         // Raycast
         RaycastHit hit;
         if (Physics.Raycast(bulletSpawn.position, bulletSpawn.forward, out hit, 100f, LayerMask.GetMask("Hittable")))
@@ -28,10 +36,20 @@ public class Shoot : MonoBehaviour
             // Check if we hit something
             GameObject target = hit.collider.gameObject;
 
-            // Destroy the object if it has tag Enemy
-            if (target.transform.CompareTag("Enemy"))
+            if (target.transform.CompareTag("Head"))
             {
-                Destroy(target.transform.parent?.gameObject);
+                target.transform.parent?.gameObject.GetComponent<Enemy>().Headshot();
+
+                hitAudioSource.clip = headshotSound;
+                hitAudioSource.Play();
+            }
+
+            if (target.transform.CompareTag("Body"))
+            {
+                target.transform.parent?.gameObject.GetComponent<Enemy>().Hit();
+
+                hitAudioSource.clip = hitSound;
+                hitAudioSource.Play();
             }
             
             if (target.transform.CompareTag("Button")) {
@@ -40,9 +58,8 @@ public class Shoot : MonoBehaviour
         }
 
         // Play a random shoot sound
-        AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.clip = shootSounds[Random.Range(0, shootSounds.Length)];
-        audioSource.Play();
+        shootAudioSource.clip = shootSounds[Random.Range(0, shootSounds.Length)];
+        shootAudioSource.Play();
         // Play the muzzle flash as child of the muzzle flash spawn
         GameObject flash = Instantiate(muzzleFlash, muzzleFlashSpawn.transform.position, muzzleFlashSpawn.transform.rotation);
         flash.transform.parent = muzzleFlashSpawn.transform;

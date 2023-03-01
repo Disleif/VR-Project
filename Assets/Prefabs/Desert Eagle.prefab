@@ -396,6 +396,13 @@ MonoBehaviour:
   muzzleFlash: {fileID: 100004, guid: 510e0a736e5e66243b242a076c59611a, type: 3}
   muzzleFlashSpawn: {fileID: 2048668573726382227}
   projectile: {fileID: 6649958942926428302, guid: 568336b8ed0e7ae4fbc9be383b10263b, type: 3}
+  shootSounds:
+  - {fileID: 8300000, guid: 57d48765d1932c0458ffda19f6d03391, type: 3}
+  - {fileID: 8300000, guid: dc350105cd10f174e8c662df081574ad, type: 3}
+  - {fileID: 8300000, guid: 2a0df73e4b7c8d84fb8677a11ab40b8d, type: 3}
+  headshotSound: {fileID: 8300000, guid: f0a0a23810eba634497ab8b1e4eb900f, type: 3}
+  hitSound: {fileID: 8300000, guid: b526e65f468a440409e999250088662c, type: 3}
+  shootVolume: 0.1
   projectileSpeed: 15
   showLaser: 1
 --- !u!114 &2129538139672826519
