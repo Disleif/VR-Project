@@ -1142,6 +1142,7 @@ MonoBehaviour:
   targetCount: 30
   timerText: {fileID: 7417608432690120502}
   targetText: {fileID: 9033751541358880044}
+  isSpeedMode: 0
 --- !u!1 &8649198727174431886
 GameObject:
   m_ObjectHideFlags: 0

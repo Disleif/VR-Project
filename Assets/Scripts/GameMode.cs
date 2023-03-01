@@ -11,23 +11,39 @@ public class GameMode : MonoBehaviour
 
     [SerializeField] private GameObject timerText;
     [SerializeField] private GameObject targetText;
+    [SerializeField] private bool isSpeedMode;
 
     private int currentTargetCount = 0;
+    private int currentTargetDestroyed = 0;
+    private int lastTargetDestroyed = 0;
     private bool initiated = false;
     private bool finished = false;
     private float startTime;
     private float endTime;
+    private GameObject currentTarget;
 
     void Update() {
-        if (initiated) {
-            float time = Time.time - startTime;
-            timerText.GetComponent<TextMeshPro>().text = "Temps\n" + time.ToString("F2");
-        }
-        else if (finished) {
-            timerText.GetComponent<TextMeshPro>().text = "Temps\n" + (endTime - startTime).ToString("F2");
+        if (isSpeedMode) {
+            if (initiated) {
+                timerText.GetComponent<TextMeshPro>().text = "Cibles détruites\n" + currentTargetDestroyed + " / " + targetCount;
+            }
+            else if (finished) {
+                timerText.GetComponent<TextMeshPro>().text = "Cibles détruites\n" + lastTargetDestroyed + " / " + targetCount;
+            } else {
+                timerText.GetComponent<TextMeshPro>().text = "Cibles détruites\n0 / " + targetCount;
+            }
         }
         else {
-            timerText.GetComponent<TextMeshPro>().text = "Temps\n0.00";
+            if (initiated) {
+                float time = Time.time - startTime;
+                timerText.GetComponent<TextMeshPro>().text = "Temps\n" + time.ToString("F2");
+            }
+            else if (finished) {
+                timerText.GetComponent<TextMeshPro>().text = "Temps\n" + (endTime - startTime).ToString("F2");
+            }
+            else {
+                timerText.GetComponent<TextMeshPro>().text = "Temps\n0.00";
+            }
         }
     }
 
@@ -48,20 +64,30 @@ public class GameMode : MonoBehaviour
             yield return new WaitForSeconds(.5f);
 
             // Instantiate target
-            GameObject target = SpawnTarget();
+            currentTarget = SpawnTarget();
 
             // Increment target count
             currentTargetCount++;
             targetText.GetComponent<TextMeshPro>().text = "Cibles restantes\n" + (targetCount - currentTargetCount + 1);
             
-            // Wait for target to be destroyed from scene
-            yield return new WaitUntil(() => target == null);
+            if (isSpeedMode) {
+                // Wait for 1 second or  until target is destroyed from scene
+                float currentTime = Time.time;
+                yield return new WaitUntil(() => currentTarget == null || Time.time - currentTime >= 2);
+                if (currentTarget != null) Destroy(currentTarget);
+                else currentTargetDestroyed++;
+            } else {
+                // Wait for target to be destroyed from scene
+                yield return new WaitUntil(() => currentTarget == null);
+            }
         }
 
         initiated = false;
         finished = true;
         endTime = Time.time;
         currentTargetCount = 0;
+        lastTargetDestroyed = currentTargetDestroyed;
+        currentTargetDestroyed = 0;
         targetText.GetComponent<TextMeshPro>().text = "Cibles restantes\n0";
     }
 
@@ -83,6 +109,19 @@ public class GameMode : MonoBehaviour
         if (!initiated) {
             targetCount = count;
             targetText.GetComponent<TextMeshPro>().text = "Cibles restantes\n" + count;
+        }
+    }
+
+    public void EndGame() {
+        if (initiated) {
+            StopAllCoroutines();
+            initiated = false;
+            finished = false;
+            endTime = Time.time;
+            currentTargetCount = 0;
+            currentTargetDestroyed = 0;
+            targetText.GetComponent<TextMeshPro>().text = "Cibles restantes\n0";
+            if (currentTarget != null) Destroy(currentTarget);
         }
     }
 }

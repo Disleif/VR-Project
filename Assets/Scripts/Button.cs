@@ -9,9 +9,12 @@ public class Button : MonoBehaviour
         Initiate,
         Set15,
         Set30,
-        Set50
+        Set50,
+        TPSpeed,
+        TPNormal
     }
     [SerializeField] private ButtonFunction buttonFunction;
+    [SerializeField] private GameObject XROrigin;
 
     // Reference to the game mode
     [SerializeField] private GameMode gameMode;
@@ -31,6 +34,17 @@ public class Button : MonoBehaviour
             case ButtonFunction.Set50:
                 gameMode.SetTargetCount(50);
                 break;
+            case ButtonFunction.TPSpeed:
+                XROrigin.transform.position = new Vector3(109.11f, 40.603f, -152.63f);
+                XROrigin.transform.Rotate(0, 180, 0);
+                gameMode.EndGame();
+                break;
+            case ButtonFunction.TPNormal:
+                XROrigin.transform.position = new Vector3(156.946f, 40.603f, -152.63f);
+                XROrigin.transform.Rotate(0, 180, 0);
+                gameMode.EndGame();
+                break;
+
         }
 
         // Brefly change the color of the button
